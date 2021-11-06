@@ -27,3 +27,5 @@ override.tf.json
 .terraformrc
 terraform.rc
 Аналогично игнорировать указанные файлы
+
+New line
