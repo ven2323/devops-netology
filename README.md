@@ -29,3 +29,5 @@ terraform.rc
 Аналогично игнорировать указанные файлы
 
 New line
+
+Second Line
