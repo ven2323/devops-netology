@@ -47,19 +47,23 @@ for result in result_os.split('\n'):
 
 import os
 
+cmd = sys.argv[0]
 bash_command = ["cd ~/devops-netology", "git status"]
 result_os = os.popen(' && '.join(bash_command)).read()
 #is_change = False
 for result in result_os.split('\n'):
     if result.find('modified') != -1:
         prepare_result = result.replace('\tmodified:   ', '')
-        print(prepare_result)
+        print(cmd+"/"+prepare_result)
 #        break
 ```
 
 ### Вывод скрипта при запуске при тестировании:
 ```
-???
+Working Directory: /home/sa/devops-netology
+
+04-script-02-py.md
+4.2-python-1.py
 ```
 
 ## Обязательная задача 3
@@ -67,12 +71,35 @@ for result in result_os.split('\n'):
 
 ### Ваш скрипт:
 ```python
-???
+#!/usr/bin/env python3
+
+import os
+import sys
+
+cmd = os.getcwd()
+
+if len(sys.argv)>=2:
+    cmd = sys.argv[1]
+bash_command = ["cd "+cmd, "git status 2>&1"]
+
+print('\033[31m')
+result_os = os.popen(' && '.join(bash_command)).read()
+for result in result_os.split('\n'):
+    if result.find('fatal') != -1:
+        print('\033[31m Каталог \033[1m '+cmd+'\033[0m\033[31m не является GIT репозиторием\033[0m')....
+    if result.find('modified') != -1:
+        prepare_result = result.replace('\tmodified: ', '')
+        prepare_result = prepare_result.replace(' ', '').
+        print(cmd+prepare_result)
+print('\033[0m')
 ```
 
 ### Вывод скрипта при запуске при тестировании:
 ```
-???
+17:48:45 sa@gate(0):~/devops-netology$ ./4.2-python-2.py /home/sa/devops-netology/
+
+/home/sa/devops-netology/04-script-02-py.md
+/home/sa/devops-netology/4.2-python-1.py
 ```
 
 ## Обязательная задача 4
@@ -80,24 +107,38 @@ for result in result_os.split('\n'):
 
 ### Ваш скрипт:
 ```python
-???
+#!/usr/bin/env python3
+
+import socket as s
+import time as t
+import datetime as dt
+
+i = 1
+wt = 2
+srv_list = {'drive.google.com':'108.177.14.194', 'mail.google.com':'64.233.165.83', 'google.com':'173.194.221.139'}
+init=0
+
+print('*** start script ***')
+print(srv_list)
+print('********************')
+
+while 1==1 :
+  for host in srv_list:
+    ip = s.gethostbyname(host)
+    if ip != srv_list[host]:
+      if i==1 and init !=1:
+        print(str(dt.datetime.now().strftime("%Y-%m-%d %H:%M:%S")) +' [ERROR] ' + str(host) +' IP mistmatch: '+srv_list[host]+' '+ip)
+      srv_list[host]=ip
+  t.sleep(wt)
 ```
 
 ### Вывод скрипта при запуске при тестировании:
 ```
-???
-```
-
-## Дополнительное задание (со звездочкой*) - необязательно к выполнению
-
-Так получилось, что мы очень часто вносим правки в конфигурацию своей системы прямо на сервере. Но так как вся наша команда разработки держит файлы конфигурации в github и пользуется gitflow, то нам приходится каждый раз переносить архив с нашими изменениями с сервера на наш локальный компьютер, формировать новую ветку, коммитить в неё изменения, создавать pull request (PR) и только после выполнения Merge мы наконец можем официально подтвердить, что новая конфигурация применена. Мы хотим максимально автоматизировать всю цепочку действий. Для этого нам нужно написать скрипт, который будет в директории с локальным репозиторием обращаться по API к github, создавать PR для вливания текущей выбранной ветки в master с сообщением, которое мы вписываем в первый параметр при обращении к py-файлу (сообщение не может быть пустым). При желании, можно добавить к указанному функционалу создание новой ветки, commit и push в неё изменений конфигурации. С директорией локального репозитория можно делать всё, что угодно. Также, принимаем во внимание, что Merge Conflict у нас отсутствуют и их точно не будет при push, как в свою ветку, так и при слиянии в master. Важно получить конечный результат с созданным PR, в котором применяются наши изменения. 
-
-### Ваш скрипт:
-```python
-???
-```
-
-### Вывод скрипта при запуске при тестировании:
-```
-???
+18:20:43 sa@gate(0):~/devops-netology$ ./4.2-python-3.py
+*** start script ***
+{'drive.google.com': '108.177.14.194', 'mail.google.com': '64.233.165.83', 'google.com': '173.194.221.139'}
+********************
+2022-01-22 18:20:46 [ERROR] drive.google.com IP mistmatch: 108.177.14.194 74.125.205.194
+2022-01-22 18:20:46 [ERROR] mail.google.com IP mistmatch: 64.233.165.83 74.125.131.19
+2022-01-22 18:20:46 [ERROR] google.com IP mistmatch: 173.194.221.139 64.233.165.139
 ```
