@@ -1,0 +1,1 @@
+Text write by Centos to data directory
