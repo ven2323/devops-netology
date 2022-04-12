@@ -35,7 +35,7 @@ docker node ls
 ```
 Ответ:
 <p align="center">
-  <img width="1200" height="600" src="./assets/node.png">
+  <img width="1738" height="330" src="./assets/node.png">
 </p>
 
 ## Задача 3
@@ -48,7 +48,7 @@ docker service ls
 ```
 Ответ:
 <p align="center">
-  <img width="1200" height="600" src="./assets/service.png">
+  <img width="1111" height="358" src="./assets/service.png">
 </p>
 
 
