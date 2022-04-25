@@ -129,7 +129,7 @@ select count (*) from orders;
 select count (*) from clients;
 
 <p align="center">
-  <img width="443" height="559" src="./assets/3.png">
+  <img width="442" height="559" src="./assets/3.png">
 </p>
 
 ## Задача 4
