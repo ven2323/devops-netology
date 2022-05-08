@@ -165,9 +165,6 @@ socket          = /var/run/mysqld/mysqld.sock
 datadir         = /var/lib/mysql
 secure-file-priv= NULL
 #Set IO Speed
-# 0 - скорость
-# 1 - сохранность
-# 2 - универсальный параметр
 innodb_flush_log_at_trx_commit = 0 
 #Set compression
 # Barracuda - формат файла с сжатием
