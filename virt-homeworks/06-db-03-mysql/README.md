@@ -159,6 +159,7 @@ SELECT TABLE_NAME,ENGINE,ROW_FORMAT,TABLE_ROWS,DATA_LENGTH,INDEX_LENGTH FROM inf
 Приведите в ответе измененный файл `my.cnf`.
 
 Ответ:
+```bash
 [mysqld]
 pid-file        = /var/run/mysqld/mysqld.pid
 socket          = /var/run/mysqld/mysqld.sock
@@ -175,7 +176,7 @@ innodb_log_buffer_size	= 1M
 key_buffer_size = 640М
 #Set log size
 max_binlog_size	= 100M
-
+```
 ---
 
 ### Как оформить ДЗ?
