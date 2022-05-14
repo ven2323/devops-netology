@@ -129,7 +129,7 @@ select count (*) from orders;
 select count (*) from clients;
 
 <p align="center">
-  <img width="443" height="559" src="./assets/3.png">
+  <img width="442" height="559" src="./assets/3.png">
 </p>
 
 ## Задача 4
@@ -188,60 +188,6 @@ EXPLAIN - позволяет получить служебную информа�
 docker exec -t pgre-docker pg_dump -U postgres test_db -f /var/lib/postgresql/data/dump_test.sql
 docker run --rm --name pg2-docker -e POSTGRES_PASSWORD=postgres -ti -p 5433:5433 -v vol1:/var/lib/postgresql/data -v vol2:/var/lib/postgresql postgres:12
 docker exec -i pg2-docker psql -U postgres -d test_db -f /var/lib/postgresql/data/dump_test.sql
-Вывод:
-SET
-SET
-SET
-SET
-SET
- set_config
-------------
-
-(1 row)
-
-SET
-SET
-SET
-SET
-SET
-SET
-psql:/var/lib/postgresql/data/dump_test.sql:34: ERROR:  relation "clients" already exists
-psql:/var/lib/postgresql/data/dump_test.sql:49: ERROR:  relation "clients_id_seq" already exists
-ALTER TABLE
-ALTER TABLE
-ALTER SEQUENCE
-psql:/var/lib/postgresql/data/dump_test.sql:71: ERROR:  relation "orders" already exists
-ALTER TABLE
-ALTER TABLE
-psql:/var/lib/postgresql/data/dump_test.sql:86: ERROR:  relation "orders_id_seq" already exists
-ALTER SEQUENCE
-ALTER TABLE
-ALTER TABLE
-psql:/var/lib/postgresql/data/dump_test.sql:122: ERROR:  duplicate key value violates unique constraint "clients_pkey"
-DETAIL:  Key (id)=(4) already exists.
-CONTEXT:  COPY clients, line 1
-psql:/var/lib/postgresql/data/dump_test.sql:135: ERROR:  duplicate key value violates unique constraint "orders_pkey"
-DETAIL:  Key (id)=(1) already exists.
-CONTEXT:  COPY orders, line 1
- setval
---------
-      1
-(1 row)
-
- setval
---------
-      1
-(1 row)
-
-psql:/var/lib/postgresql/data/dump_test.sql:157: ERROR:  multiple primary keys for table "clients" are not allowed
-psql:/var/lib/postgresql/data/dump_test.sql:165: ERROR:  multiple primary keys for table "orders" are not allowed
-psql:/var/lib/postgresql/data/dump_test.sql:172: ERROR:  relation "country_index" already exists
-psql:/var/lib/postgresql/data/dump_test.sql:180: ERROR:  constraint "clients_order_number_fkey" for relation "clients" already exists
-GRANT
-GRANT
-GRANT
-GRANT
-
 
 ---
 
