@@ -90,6 +90,11 @@ insert into orders (id, title, price) select * from orders_simple;
 Ответ:
 pg_dump -U postgres -d test_database >test_database_dump.sql
 
+Дполнение:
+Для уникальности добавим индекс:
+```
+CREATE INDEX ON orders ((lower(title)));
+```
 ---
 
 ### Как cдавать задание
