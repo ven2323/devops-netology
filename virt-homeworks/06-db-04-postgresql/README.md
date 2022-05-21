@@ -91,10 +91,21 @@ insert into orders (id, title, price) select * from orders_simple;
 pg_dump -U postgres -d test_database >test_database_dump.sql
 
 Дполнение:
+Слежующее решение неверно т.к.индексы нужно создавать в каждой секции
 Для уникальности добавим индекс:
 ```
 CREATE INDEX ON orders ((lower(title)));
 ```
+Если я правильно понял в данном случае решается так:
+```
+CREATE INDEX  title_index ON ONLY orders (title);
+CREATE INDEX title_index_less499 ON orders_less499 (title);
+CREATE INDEX title_index_more499 ON orders_more499 (title);
+ALTER INDEX title_index  ATTACH PARTITION title_index_less499;
+ALTER INDEX title_index  ATTACH PARTITION title_index_more499;
+```
+
+
 ---
 
 ### Как cдавать задание
