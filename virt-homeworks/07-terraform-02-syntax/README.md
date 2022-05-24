@@ -103,7 +103,7 @@ export YC_SERVICE_ACCOUNT_KEY_FILE=%account_key%
 2. Ссылку на репозиторий с исходной конфигурацией терраформа.  
 
 Ответ:
-1.Сборку образа при помощи packer, конфигурациz в src 
+1. Сборку образа при помощи packer, конфигурациz в src 
 2. [Terraform](src="./src/main.tf")
 3. [Packer](src="./src/ubuntu-20-base.json)
 
